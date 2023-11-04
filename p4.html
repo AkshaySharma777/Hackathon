@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="input">Enter array of inputs.</label>
+    <input type="text" name="input" id="input" />
+    <button onclick="inp()">Result</button>
+    <br />
+    <script>
+      function permutations(res, nums, l, h) {
+        if (l == h) {
+          res.push(nums);
+
+          for (let i = 0; i < nums.length; i++) document.write(nums[i] + " ");
+
+          document.write("<br>");
+
+          return;
+        }
+
+        for (let i = l; i <= h; i++) {
+          let temp = nums[l];
+
+          nums[l] = nums[i];
+
+          nums[i] = temp;
+
+          permutations(res, nums, l + 1, h);
+
+          temp = nums[l];
+
+          nums[l] = nums[i];
+
+          nums[i] = temp;
+        }
+      }
+
+      function permute(nums) {
+        let x = nums.length - 1;
+
+        let res = [];
+
+        permutations(res, nums, 0, x);
+
+        return res;
+      }
+
+      function inp() {
+        let ip = document.getElementById("input").value;
+        console.log(ip);
+        let arrayInput = ip.split(" ");
+        var arrayInputNumber = arrayInput.map(function (str) {
+          return parseInt(str);
+        });
+        let nums = arrayInputNumber;
+        let res = permute(nums);
+      }
+    </script>
+  </body>
+</html>

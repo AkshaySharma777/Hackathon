@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA-1</title>
+    <style>
+        h1{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Find the missing element in the array from 1 to n</h1>
+        <label for="input">Enter array of inputs from 1 to n.</label>
+        <input type="text" name="input" id="input">
+        <button onclick="find()">Submit</button>
+        <h3 id="output"></h3>
+    </center>
+    <script>
+       function find(){  
+        let ip = document.getElementById("input").value; 
+        console.log(ip);
+        let arrayInput = ip.split(" ");
+        console.log(arrayInput);
+        let output = document.getElementById("output");
+        let key;
+        if (ip.length == 0) {
+            alert('Please enter a valid number');
+        }
+        else{
+            if(arrayInput[0]==1){
+                  for(let i = 1; i <= arrayInput.length; i++){
+                   if(arrayInput[i-1]!=i){
+                      output.innerText = i;
+                   }
+                 }
+            }
+            else{
+                alert("Input should start with 1");
+            }
+        }
+       }
+    </script>
+</body>
+</html>

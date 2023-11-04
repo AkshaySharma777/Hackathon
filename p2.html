@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA-2</title>
+    <style>
+        h1{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Return the indices of the two numbers that add up to the target</h1>
+        <label for="input">Enter array of inputs.</label>
+        <input type="text" name="input" id="input">
+        <label for="sum">Enter sum.</label>
+        <input type="text" name="sum" id="sum">
+        <button onclick="find()">Submit</button>
+        <h3 id="output"></h3>
+    </center>
+    <script>
+       function find(){  
+        let ip = document.getElementById("input").value; 
+        console.log(ip);
+        let arrayInput = ip.split(" ");
+        let arrayInputNumber = arrayInput.map(function(str) {
+           return parseInt(str); 
+        });
+        console.log("arrayInputNumber = ", arrayInputNumber);
+        console.log(arrayInput);
+        let output = document.getElementById("output");
+        let sum = document.getElementById("sum").value;
+        console.log(sum)
+        if (ip.length == 0 || sum.length ==0) {
+            alert('Please enter a valid number and sum');
+        }
+        else{
+           for(let i=0; i<arrayInput.length-1;i++){
+              for(let j=i+1;j<arrayInput.length;j++){
+                console.log(arrayInputNumber[i]+arrayInputNumber[j]);
+                  if(arrayInputNumber[i]+arrayInputNumber[j]==sum){
+                     output.innerHTML += `[${i}, ${j}] <br>`;
+                  }
+              }
+           }
+        }
+       }
+    </script>
+</body>
+</html>

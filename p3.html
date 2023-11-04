@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Roman Numeral Converter</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .converter {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="converter">
+  <h1>Number to Roman.</h1>
+  <input type="number" id="numberInput" placeholder="Enter a number">
+  <button onclick="convertToRoman()">Result</button>
+  <h3 id="result"></h3>
+</div>
+
+<script>
+  // JavaScript
+  function convertToRoman() {
+    const numberInput = document.getElementById('numberInput').value;
+    const result = document.getElementById('result');
+
+    if (numberInput === '') {
+      result.innerText = 'Please enter a number';
+      return;
+    }
+
+    const romanNumeral = toRoman(parseInt(numberInput, 10));
+    result.innerText = `Roman numeral: ${romanNumeral}`;
+  }
+
+  function toRoman(num) {
+    const romanNumerals = {
+      M: 1000,
+      CM: 900,
+      D: 500,
+      CD: 400,
+      C: 100,
+      XC: 90,
+      L: 50,
+      XL: 40,
+      X: 10,
+      IX: 9,
+      V: 5,
+      IV: 4,
+      I: 1
+    };
+
+    let roman = '';
+
+    for (let key in romanNumerals) {
+      while (num >= romanNumerals[key]) {
+        roman += key;
+        num -= romanNumerals[key];
+      }
+    }
+
+    return roman;
+  }
+</script>
+
+</body>
+</html>
